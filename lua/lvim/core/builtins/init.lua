@@ -3,6 +3,7 @@ local M = {}
 local builtins = {
   "lvim.core.which-key",
   "lvim.core.gitsigns",
+  "lvim.core.luasnip",
   "lvim.core.cmp",
   "lvim.core.dashboard",
   "lvim.core.dap",

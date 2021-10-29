@@ -64,6 +64,13 @@ return {
     end,
     disable = not lvim.builtin.telescope.active,
   },
+  -- Luasnip
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      require("lvim.core.luasnip").setup()
+    end
+  },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     commit = commit.telescope_fzf_native,

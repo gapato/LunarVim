@@ -232,7 +232,7 @@ M.config = function()
     },
     sources = {
       { name = "nvim_lsp" },
-      { name = "path" },
+      -- { name = "path" },
       { name = "luasnip" },
       { name = "cmp_tabnine" },
       { name = "nvim_lua" },
@@ -278,9 +278,17 @@ M.config = function()
         "i",
         "s",
       }),
-
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-e>"] = cmp.mapping.abort(),
+      -- ["<C-v>"] = cmp.mapping.confirm(),
+      ["<C-Space>"] = cmp.mapping(function()
+	      if cmp.visible() then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+          cmp.confirm({select = true, behavior = cmp.ConfirmBehavior.Replace })
+	      end
+      end,
+	      {"i"}
+      ),
+      -- cmp.mapping.complete(),
+      ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() and cmp.confirm(lvim.builtin.cmp.confirm_opts) then
           if jumpable() then
